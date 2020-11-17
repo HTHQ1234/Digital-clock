@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            padding-top: 300px;
+        }
+        
+        #box {
+            height: 130px;
+            width: 800px;
+            margin: 0 auto;
+            font-size: 25px;
+            line-height: 130px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="./img/数码时钟/0.png" alt="">
+        <img src="./img/数码时钟/0.png" alt=""> <span>时</span>
+        <img src="./img/数码时钟/0.png" alt="">
+        <img src="./img/数码时钟/0.png" alt=""> <span>分</span>
+        <img src="./img/数码时钟/0.png" alt="">
+        <img src="./img/数码时钟/0.png" alt=""> <span>秒</span>
+    </div>
+
+    <script>
+        var clock = document.querySelectorAll('img');
+
+        setInterval(() => {
+            var now = new Date(); //创建一个日期对象
+            var h = now.getHours(); //获取到小时
+            var m = now.getMinutes(); //获取分钟
+            var s = now.getSeconds(); //获取秒数
+
+
+            var _date = [
+                h < 10 ? 0 : Math.floor(h / 10),
+                h % 10,
+                m < 10 ? 0 : Math.floor(m / 10),
+                m % 10,
+                s < 10 ? 0 : Math.floor(s / 10),
+                s % 10
+            ];
+
+            for (var i = 0; i < clock.length; i++) {
+                clock[i].src = './img/数码时钟/' + _date[i] + '.png';
+            }
+            console.log(_date);
+        }, 1000);
+    </script>
+</body>
+
+</html>
